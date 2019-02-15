@@ -1,7 +1,5 @@
-package com.example.newsteamapplication
+package com.hdrussell.apps.steam.services
 
-import android.util.Log
-import io.reactivex.Observable
 import okhttp3.*
 import java.io.IOException
 

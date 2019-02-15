@@ -1,4 +1,4 @@
-package com.example.newsteamapplication;
+package com.hdrussell.apps;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
