@@ -1,4 +1,4 @@
-package com.hdrussell.apps.steam.services
+package com.hdrussell.apps.steam.news.services
 
 import okhttp3.*
 import java.io.IOException

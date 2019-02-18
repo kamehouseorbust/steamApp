@@ -1,8 +1,8 @@
-package com.hdrussell.apps.steam
+package com.hdrussell.apps.steam.news
 
 import android.app.Activity
 import android.os.Bundle
-import com.hdrussell.apps.steam.services.GetGameNewsService
+import com.hdrussell.apps.steam.news.services.GetGameNewsService
 import okhttp3.OkHttpClient
 
 class MainActivity : Activity() {
