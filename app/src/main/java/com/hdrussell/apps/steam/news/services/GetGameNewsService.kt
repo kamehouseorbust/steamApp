@@ -6,6 +6,7 @@ import com.dreamsocket.rx.RxScheduler
 import com.hdrussell.apps.steam.news.data.GameNewsItems
 import com.hdrussell.apps.steam.news.data.decoders.GameNewsItemsDecoder
 import io.reactivex.Observable
+import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
@@ -14,13 +15,21 @@ import org.json.JSONTokener
 
 class GetGameNewsService(protected var m_client: OkHttpClient) {
 
-    var m_url:String = "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=440&count=3&maxlength=3000&format=json"
+    var m_url:String = "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/"
 
-    fun execute(): Observable<GameNewsItems> {
+    fun execute(p_params:GetGameNewsParams): Observable<GameNewsItems> {
         return Observable.create<GameNewsItems> {emitter ->
             try {
+                var url = HttpUrl.parse(this.m_url)!!.newBuilder()
+                        .addQueryParameter("appid", p_params.appid.toString())
+                        .addQueryParameter("count", p_params.count.toString())
+                        .addQueryParameter("maxlength", p_params.maxlength.toString())
+                        .addQueryParameter("format", p_params.format)
+                        .build()
+
+
                 val request = Request.Builder()
-                        .url(m_url)
+                        .url(url)
                         .build()
 
                 val call = this.m_client.newCall(request)
@@ -42,19 +51,4 @@ class GetGameNewsService(protected var m_client: OkHttpClient) {
             return GameNewsItemsDecoder().decode(JSONTokener(p_input.body()!!.string()).nextValue() as JSONObject)
         }
     }
-
-//    fun execute() {
-//        val request = Request.Builder()
-//            .url(m_url)
-//            .build()
-//
-//        val call = this.m_client.newCall(request)
-//                this.m_client.newCall(request).enqueue(object : Callback {
-//                    override fun onFailure(call: Call, e:IOException) {}
-//                    override fun onResponse(call: Call, response: Response) {
-//                        val test = GameNewsItemsDecoder().decode(JSONTokener(response.body()!!.string()).nextValue() as JSONObject)
-//                        println(test.toString())
-//                    }
-//                })
-//        }
 }
