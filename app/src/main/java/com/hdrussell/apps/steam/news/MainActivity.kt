@@ -14,6 +14,13 @@ class MainActivity : Activity() {
 
         val gameNewsService = GetGameNewsService(m_client)
 
-        gameNewsService.execute()
+        gameNewsService.execute().subscribe(
+                {
+                    val f = 0
+                },
+                {
+                    val f = 0
+                }
+        )
     }
 }
