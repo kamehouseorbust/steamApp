@@ -6,7 +6,7 @@ import com.hdrussell.apps.steam.news.services.GetGameNewsParams
 import com.hdrussell.apps.steam.news.services.GetGameNewsService
 import okhttp3.OkHttpClient
 
-class MainActivity : Activity() {
+class TestGetGameNewsService : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
