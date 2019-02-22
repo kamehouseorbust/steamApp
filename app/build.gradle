@@ -12,6 +12,9 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    flavorDimensions "default"
+
     buildTypes {
         release {
             minifyEnabled false
@@ -23,6 +26,13 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     productFlavors {
+        dev {
+            dimension "default"
+        }
+
+        prod {
+            dimension "default"
+        }
     }
 }
 
