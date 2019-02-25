@@ -13,24 +13,20 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainController : AppCompatActivity() {
 
-    private lateinit var drawerLayout: UIDrawer
-    private lateinit var navigationView: UINav
-    private lateinit var toolbar: UIToolbar
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        drawerLayout = findViewById(R.id.drawer_layout)
+        val drawerLayout: UIDrawer = findViewById(R.id.drawer_layout)
 
-        navigationView = findViewById(R.id.nav_view)
+        val navigationView: UINav = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener { menuItem ->
             menuItem.isChecked = true
             drawerLayout.closeDrawers()
             true
         }
 
-        toolbar = findViewById(R.id.toolbar)
+        val toolbar: UIToolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         val actionbar: ActionBar? = supportActionBar
         actionbar?.apply {

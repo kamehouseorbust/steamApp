@@ -21,5 +21,5 @@ class UIToolbar : Toolbar {
     }
 
 
-    protected fun init() {}
+    private fun init() {}
 }

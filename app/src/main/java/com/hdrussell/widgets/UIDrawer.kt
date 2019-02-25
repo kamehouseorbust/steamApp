@@ -26,7 +26,7 @@ class UIDrawer : DrawerLayout {
     }
 
 
-    protected fun init() {
+    private fun init() {
         this.dragEnabled = true
 
         this.addDrawerListener(

@@ -21,5 +21,7 @@ class UINav : NavigationView {
     }
 
 
-    protected fun init() {}
+    private fun init() {
+        this.menu.getItem(0)?.isChecked = true
+    }
 }
