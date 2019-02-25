@@ -1,21 +1,21 @@
 package com.hdrussell.apps.steam.main
 
 import android.os.Bundle
-import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import com.hdrussell.apps.R
 import com.hdrussell.widgets.UIDrawer
 import com.hdrussell.widgets.UINav
+import com.hdrussell.widgets.UIToolbar
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainController : AppCompatActivity() {
 
     private lateinit var drawerLayout: UIDrawer
     private lateinit var navigationView: UINav
+    private lateinit var toolbar: UIToolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +30,7 @@ class MainController : AppCompatActivity() {
             true
         }
 
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         val actionbar: ActionBar? = supportActionBar
         actionbar?.apply {
