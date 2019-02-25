@@ -10,17 +10,21 @@ class UIDrawer : DrawerLayout {
 
     var dragEnabled: Boolean = false
 
+
     constructor(context: Context) : super(context) {
         this.init()
     }
+
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
         this.init()
     }
 
+
     constructor(context: Context, attrs: AttributeSet?, defStyle: Int) : super(context, attrs, defStyle) {
         this.init()
     }
+
 
     protected fun init() {
         this.dragEnabled = true
