@@ -11,11 +11,12 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import com.hdrussell.apps.R
+import com.hdrussell.widgets.UIDrawer
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainController : AppCompatActivity() {
 
-    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var drawerLayout: UIDrawer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,26 +31,6 @@ class MainController : AppCompatActivity() {
 
             true
         }
-
-        drawerLayout.addDrawerListener(
-                object : DrawerLayout.DrawerListener {
-                    override fun onDrawerSlide(p0: View, p1: Float) {
-                        Log.d("drawerElement", "drawerSlide")
-                    }
-
-                    override fun onDrawerOpened(p0: View) {
-                        Log.d("drawerElement", "drawerOpened")
-                    }
-
-                    override fun onDrawerClosed(p0: View) {
-                        Log.d("drawerElement", "drawerClosed")
-                    }
-
-                    override fun onDrawerStateChanged(p0: Int) {
-                        Log.d("drawerElement", "drawerChanged")
-                    }
-                }
-        )
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
