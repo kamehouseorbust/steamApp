@@ -1,10 +1,14 @@
 package com.hdrussell.apps.steam.main
 
+import android.content.res.Resources
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import com.hdrussell.apps.R
 import com.hdrussell.widgets.UIDrawer
 import com.hdrussell.widgets.UINav
@@ -18,11 +22,27 @@ class MainController : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val drawerLayout: UIDrawer = findViewById(R.id.drawer_layout)
+        var currentView: View = findViewById(R.id.main)
 
         val navigationView: UINav = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener { menuItem ->
             menuItem.isChecked = true
             drawerLayout.closeDrawers()
+
+            val parent: ViewGroup = currentView.parent as ViewGroup
+            val index: Int = parent.indexOfChild(currentView)
+            parent.removeView(currentView)
+
+            when(menuItem.title) {
+                "Profile" -> currentView = layoutInflater.inflate(R.layout.profile, parent, false)
+                "Friends" -> currentView = layoutInflater.inflate(R.layout.friends, parent, false)
+                "Games" -> currentView = layoutInflater.inflate(R.layout.games, parent, false)
+            }
+
+            parent.addView(currentView, index)
+
+
+
             true
         }
 
