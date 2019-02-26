@@ -17,32 +17,21 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainController : AppCompatActivity() {
 
+    lateinit var currentView: View
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val drawerLayout: UIDrawer = findViewById(R.id.drawer_layout)
-        var currentView: View = findViewById(R.id.main)
+        currentView = findViewById(R.id.main)
+        changeView("Profile")
 
         val navigationView: UINav = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener { menuItem ->
             menuItem.isChecked = true
             drawerLayout.closeDrawers()
-
-            val parent: ViewGroup = currentView.parent as ViewGroup
-            val index: Int = parent.indexOfChild(currentView)
-            parent.removeView(currentView)
-
-            when(menuItem.title) {
-                "Profile" -> currentView = layoutInflater.inflate(R.layout.profile, parent, false)
-                "Friends" -> currentView = layoutInflater.inflate(R.layout.friends, parent, false)
-                "Games" -> currentView = layoutInflater.inflate(R.layout.games, parent, false)
-            }
-
-            parent.addView(currentView, index)
-
-
-
+            changeView(menuItem?.title as String)
             true
         }
 
@@ -65,4 +54,16 @@ class MainController : AppCompatActivity() {
         }
     }
 
+    private fun changeView(itemTitle: String?){
+        val parent: ViewGroup = this.currentView.parent as ViewGroup
+        val index: Int = parent.indexOfChild(this.currentView)
+        parent.removeView(this.currentView)
+        when(itemTitle) {
+            "Profile" -> this.currentView = layoutInflater.inflate(R.layout.profile, parent, false)
+            "Friends" -> this.currentView = layoutInflater.inflate(R.layout.friends, parent, false)
+            "Games" -> this.currentView = layoutInflater.inflate(R.layout.games, parent, false)
+            else -> this.currentView = layoutInflater.inflate(R.layout.profile, parent, false)
+        }
+        parent.addView(this.currentView, index)
+    }
 }
