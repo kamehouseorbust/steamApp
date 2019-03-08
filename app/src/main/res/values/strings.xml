@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">newSteamApplication</string>
+
+    <!--Menu items-->
+    <string name="profile">Profile</string>
+    <string name="friends">Friends</string>
+    <string name="games">Games</string>
 </resources>

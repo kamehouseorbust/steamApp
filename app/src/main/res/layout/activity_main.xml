@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
+<com.hdrussell.widgets.UIDrawer
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.v7.widget.Toolbar
+        <com.hdrussell.widgets.UIToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
@@ -23,7 +23,8 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/main">
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,7 +37,7 @@
 
     </android.support.constraint.ConstraintLayout>
 
-    <android.support.design.widget.NavigationView
+    <com.hdrussell.widgets.UINav
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -44,4 +45,4 @@
         android:fitsSystemWindows="true"
         app:menu="@menu/drawer_view"/>
 
-</android.support.v4.widget.DrawerLayout>
+</com.hdrussell.widgets.UIDrawer>
