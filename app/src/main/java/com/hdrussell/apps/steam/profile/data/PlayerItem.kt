@@ -1,4 +1,4 @@
-package com.hdrussell.apps.steam.news.data
+package com.hdrussell.apps.steam.profile.data
 
 data class PlayerItem (
         val steamid: String,

@@ -1,6 +1,6 @@
-package com.hdrussell.apps.steam.news.data.decoders
+package com.hdrussell.apps.steam.profile.data.decoders
 
-import com.hdrussell.apps.steam.news.data.PlayerItem
+import com.hdrussell.apps.steam.profile.data.PlayerItem
 import org.json.JSONObject
 
 class PlayerItemDecoder {
