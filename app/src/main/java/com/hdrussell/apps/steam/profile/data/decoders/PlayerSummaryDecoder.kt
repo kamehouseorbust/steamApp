@@ -1,12 +1,12 @@
 package com.hdrussell.apps.steam.profile.data.decoders
 
-import com.hdrussell.apps.steam.profile.data.PlayerItem
+import com.hdrussell.apps.steam.profile.data.PlayerSummary
 import org.json.JSONObject
 
-class PlayerItemDecoder {
+class PlayerSummaryDecoder {
 
-    fun decode(p_value: JSONObject): PlayerItem {
-        return PlayerItem(
+    fun decode(p_value: JSONObject): PlayerSummary {
+        return PlayerSummary(
                 steamid = p_value.optString("steamid"),
                 communityvisibilitystate = p_value.optInt("communityvisibilitystate"),
                 profilestate = p_value.optInt("profilestate"),

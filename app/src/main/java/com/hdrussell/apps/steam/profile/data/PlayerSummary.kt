@@ -1,6 +1,6 @@
 package com.hdrussell.apps.steam.profile.data
 
-data class PlayerItem (
+data class PlayerSummary (
         val steamid: String,
         val communityvisibilitystate: Int,
         val profilestate: Int,

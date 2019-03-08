@@ -12,8 +12,8 @@ import com.hdrussell.apps.R
 import com.hdrussell.apps.steam.news.services.GetGameNewsParams
 import com.hdrussell.apps.steam.news.services.GetGameNewsService
 import com.hdrussell.apps.steam.PrivateKey
-import com.hdrussell.apps.steam.profile.services.GetPlayerItemParams
-import com.hdrussell.apps.steam.profile.services.GetPlayerItemService
+import com.hdrussell.apps.steam.profile.services.GetPlayerSummaryParams
+import com.hdrussell.apps.steam.profile.services.GetPlayerSummaryService
 import com.hdrussell.widgets.UIDrawer
 import com.hdrussell.widgets.UINav
 import com.hdrussell.widgets.UIToolbar
@@ -67,8 +67,8 @@ class MainController : AppCompatActivity() {
             "Profile" -> {
                 this.currentView = layoutInflater.inflate(R.layout.profile, parent, false)
                 val m_client = OkHttpClient()
-                val playerItemsService = GetPlayerItemService(m_client)
-                playerItemsService.execute(GetPlayerItemParams(PrivateKey().key, 76561197960435530.toLong(), "json")).subscribe(
+                val playerItemsService = GetPlayerSummaryService(m_client)
+                playerItemsService.execute(GetPlayerSummaryParams(PrivateKey().key, 76561197960435530.toLong(), "json")).subscribe(
                         {
                             var nameView = this.currentView.findViewById<TextView>(R.id.profile_name)
                             var imageView = this.currentView.findViewById<TextView>(R.id.profile_picture)
