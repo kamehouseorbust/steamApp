@@ -2,6 +2,7 @@ package com.hdrussell.apps.steam.profile
 
 import android.app.Activity
 import android.os.Bundle
+import com.hdrussell.apps.steam.PrivateKey
 import com.hdrussell.apps.steam.profile.services.GetPlayerItemParams
 import com.hdrussell.apps.steam.profile.services.GetPlayerItemService
 import okhttp3.OkHttpClient

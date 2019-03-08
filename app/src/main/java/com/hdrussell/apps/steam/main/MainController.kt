@@ -1,21 +1,17 @@
 package com.hdrussell.apps.steam.main
 
-import android.content.res.Resources
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.support.constraint.ConstraintLayout
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import com.hdrussell.apps.R
 import com.hdrussell.apps.steam.news.services.GetGameNewsParams
 import com.hdrussell.apps.steam.news.services.GetGameNewsService
-import com.hdrussell.apps.steam.profile.PrivateKey
+import com.hdrussell.apps.steam.PrivateKey
 import com.hdrussell.apps.steam.profile.services.GetPlayerItemParams
 import com.hdrussell.apps.steam.profile.services.GetPlayerItemService
 import com.hdrussell.widgets.UIDrawer
