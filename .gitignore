@@ -13,3 +13,7 @@
 .externalNativeBuild
 
 \.idea/
+
+app/src/main/java/com/hdrussell/apps/steam/profile/PrivateKey\.kt
+
+app/src/dev/AndroidManifest\.xml
