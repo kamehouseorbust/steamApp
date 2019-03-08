@@ -3,17 +3,26 @@ package com.hdrussell.apps.steam.main
 import android.content.res.Resources
 import android.os.Bundle
 import android.provider.ContactsContract
+import android.support.constraint.ConstraintLayout
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import com.hdrussell.apps.R
+import com.hdrussell.apps.steam.news.services.GetGameNewsParams
+import com.hdrussell.apps.steam.news.services.GetGameNewsService
+import com.hdrussell.apps.steam.profile.PrivateKey
+import com.hdrussell.apps.steam.profile.services.GetPlayerItemParams
+import com.hdrussell.apps.steam.profile.services.GetPlayerItemService
 import com.hdrussell.widgets.UIDrawer
 import com.hdrussell.widgets.UINav
 import com.hdrussell.widgets.UIToolbar
 import kotlinx.android.synthetic.main.activity_main.*
+import okhttp3.OkHttpClient
 
 class MainController : AppCompatActivity() {
 
@@ -59,9 +68,41 @@ class MainController : AppCompatActivity() {
         val index: Int = parent.indexOfChild(this.currentView)
         parent.removeView(this.currentView)
         when(itemTitle) {
-            "Profile" -> this.currentView = layoutInflater.inflate(R.layout.profile, parent, false)
+            "Profile" -> {
+                this.currentView = layoutInflater.inflate(R.layout.profile, parent, false)
+                val m_client = OkHttpClient()
+                val playerItemsService = GetPlayerItemService(m_client)
+                playerItemsService.execute(GetPlayerItemParams(PrivateKey().key, 76561197960435530.toLong(), "json")).subscribe(
+                        {
+                            var nameView = this.currentView.findViewById<TextView>(R.id.profile_name)
+                            var imageView = this.currentView.findViewById<TextView>(R.id.profile_picture)
+                            nameView.text = it.playerItemsList[0].realname
+                            imageView.text = "Profile Image Url = " + it.playerItemsList[0].avatarfull
+                        },
+                        {
+                            val f = 0
+                        }
+                )
+            }
             "Friends" -> this.currentView = layoutInflater.inflate(R.layout.friends, parent, false)
-            "Games" -> this.currentView = layoutInflater.inflate(R.layout.games, parent, false)
+            "Games" -> {
+                this.currentView = layoutInflater.inflate(R.layout.games, parent, false)
+                val m_client = OkHttpClient()
+                val gameNewsService = GetGameNewsService(m_client)
+                gameNewsService.execute(GetGameNewsParams((440).toDouble(), 3, (3000).toDouble(), "json")).subscribe(
+                        {
+                            var newsView1 = this.currentView.findViewById<TextView>(R.id.newsItem1)
+                            newsView1.setText("1: " + it.gamesNewsItemsList[0].title)
+                            var newsView2 = this.currentView.findViewById<TextView>(R.id.newsItem2)
+                            newsView2.setText("2: " + it.gamesNewsItemsList[1].title)
+                            var newsView3 = this.currentView.findViewById<TextView>(R.id.newsItem3)
+                            newsView3.setText("3: " + it.gamesNewsItemsList[2].title)
+                        },
+                        {
+                            val f = 0
+                        }
+                )
+            }
             else -> this.currentView = layoutInflater.inflate(R.layout.profile, parent, false)
         }
         parent.addView(this.currentView, index)
